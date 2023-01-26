@@ -7,6 +7,7 @@ import (
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/pgxpool"
 	"go.mod/internal/config"
+	"log"
 )
 
 type Client interface {
@@ -21,7 +22,7 @@ func NewClient(cntx context.Context, cfg *config.Config) (dbPool *pgxpool.Pool, 
 		cfg.Db.Username, cfg.Db.Password, cfg.Db.Host, cfg.Db.Port, cfg.Db.Dbname)
 	dbPool, err = pgxpool.Connect(cntx, dsn)
 	if err != nil {
-		return nil, err
+		log.Fatalln(err)
 	}
 	return dbPool, nil
 }

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Id user</title>
     <meta charset="utf-8" />
 </head>
 <body>
 <form method="POST" action="order">
     <label>{{.}}</label><br>
-    <input type="text" name="uid" /><br><br>
-    <input type="submit" value="Отправить" />
+    <input type="text" name="uid" counter maxlength="19" minlength="19"/><br><br>
+    <input type="submit" value="Получить данные" />
 </form>
 </body>
 </html>

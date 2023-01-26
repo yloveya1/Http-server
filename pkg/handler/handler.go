@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"context"
 	"github.com/julienschmidt/httprouter"
 	"go.mod/pkg/repository"
 	"html/template"
@@ -34,7 +33,11 @@ func (h *handler) Interface(writer http.ResponseWriter, request *http.Request, p
 func (h *handler) PutData(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	temp, _ := template.ParseFiles("html_file/order.html")
 	uid := request.FormValue("uid")
-	res, _ := h.serv.FindOrder(context.Background(), uid)
+	res, err := h.serv.GetCache().Get(uid)
 	//put, _ := json.MarshalIndent(res, "", "\t")
-	temp.Execute(writer, res)
+	if err == nil {
+		temp.Execute(writer, res)
+	} else {
+		writer.Write([]byte("Заказ с данным ID отсутствует"))
+	}
 }

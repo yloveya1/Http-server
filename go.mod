@@ -7,6 +7,7 @@ require (
 	github.com/cockroachdb/apd v1.1.0 // indirect
 	github.com/georgysavva/scany v1.2.1 // indirect
 	github.com/gofrs/uuid v4.3.1+incompatible // indirect
+	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/ilyakaznacheev/cleanenv v1.4.2 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/fake v0.0.0-20150926172116-812a484cc733 // indirect
@@ -22,6 +23,10 @@ require (
 	github.com/jackc/puddle v1.3.0 // indirect
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
+	github.com/nats-io/nats.go v1.22.1 // indirect
+	github.com/nats-io/nkeys v0.3.0 // indirect
+	github.com/nats-io/nuid v1.0.1 // indirect
+	github.com/nats-io/stan.go v0.10.4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/shopspring/decimal v1.3.1 // indirect
 	golang.org/x/crypto v0.5.0 // indirect

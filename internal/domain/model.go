@@ -22,7 +22,6 @@ type Payment struct {
 	Goods_total   int    `json:"goods_total"`
 	Custom_fee    int    `json:"custom_fee"`
 }
-
 type Item struct {
 	Chrt_id      int    `json:"chrt_id"`
 	Track_number string `json:"track_number"`
@@ -53,3 +52,5 @@ type Order struct {
 	Date_created       string   `json:"date_created"`
 	Oof_shard          string   `json:"oof_shard"`
 }
+
+type Items []Item

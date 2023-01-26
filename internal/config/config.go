@@ -1,26 +1,30 @@
 package config
 
 import (
-	"fmt"
 	"github.com/ilyakaznacheev/cleanenv"
+	"log"
 	"sync"
 )
 
 type Config struct {
-	Port string `yaml:"port"`
-	Db   struct {
-		Username string `yaml:"username"`
-		Password string `yaml:"password"`
-		Host     string `yaml:"host"`
-		Port     string `yaml:"port"`
-		Dbname   string `yaml:"dbname"`
-		Sslmode  string `yaml:"sslmode"`
-	}
-	NatStreaming struct {
-		ClusterId string `yaml:"clusterId"`
-		ClientId  string `yaml:"clientId"`
-		NatsURL   string `yaml:"natsURL"`
-	}
+	Port string       `yaml:"port"`
+	Nats NatStreaming `yaml:"natStreaming"`
+	Db   Db           `yaml:"db"`
+}
+
+type NatStreaming struct {
+	ClusterId string `yaml:"clusterId"`
+	ClientId  string `yaml:"clientId"`
+	NatsURL   string `yaml:"natsURL"`
+}
+
+type Db struct {
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+	Host     string `yaml:"host"`
+	Port     string `yaml:"port"`
+	Dbname   string `yaml:"dbname"`
+	Sslmode  string `yaml:"sslmode"`
 }
 
 var Conf *Config
@@ -30,8 +34,7 @@ func GetConf() *Config {
 	once.Do(func() {
 		Conf = &Config{}
 		if err := cleanenv.ReadConfig("config.yml", Conf); err != nil {
-			a, _ := cleanenv.GetDescription(Conf, nil)
-			fmt.Println(a)
+			log.Fatalln(err)
 		}
 	})
 	return Conf
