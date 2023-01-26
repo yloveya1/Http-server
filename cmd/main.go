@@ -67,12 +67,13 @@ func SubscriberNats(s repository.Repository, conn stan.Conn) {
 	var err error
 
 	_, err = conn.Subscribe("NewOrder", func(msg *stan.Msg) {
-
 		var ord domain.Order
 		if err = json.Unmarshal(msg.Data, &ord); err != nil {
 			log.Fatalln(err)
 		}
-		s.AddOrderDataDB(context.Background(), ord)
+		if err = s.AddOrderDataDB(context.Background(), ord); err != nil {
+			log.Fatalln(err)
+		}
 		s.GetCache().Set(ord.Order_uid, ord, 15*time.Minute)
 
 		fmt.Printf("seq = %d [redelivered = %v] mes= %s \n", msg.Sequence, msg.Redelivered, msg.Data)
