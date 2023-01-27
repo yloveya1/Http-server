@@ -1,4 +1,4 @@
-port: "8000"
+port: "8080"
 
 db:
   username: "postgres"
@@ -11,5 +11,3 @@ db:
 natStreaming:
   clusterId: "test-cluster"
   clientId: "test-client"
-
-#  natsURL: "nats://localhost:4222"

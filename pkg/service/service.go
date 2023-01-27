@@ -77,7 +77,7 @@ func (r *Service) FindDelivery(ctx context.Context, delivery *domain.Delivery, u
 	return nil
 }
 
-func (r *Service) FindItems(ctx context.Context, items *[]domain.Item, uid string) error {
+func (r *Service) FindItems(ctx context.Context, items *domain.Items, uid string) error {
 	q := fmt.Sprintf("SELECT chrt_id, track_number, price, rid, name, sale, size, total_price, nm_id, brand, status FROM %s WHERE order_uid=$1", itemsTable)
 
 	rows, err := r.client.Query(ctx, q, uid)

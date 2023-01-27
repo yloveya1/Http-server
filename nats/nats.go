@@ -13,7 +13,7 @@ func main() {
 	}
 	defer st.Close()
 	test := domain.Order{
-		Order_uid:          "b563feb7b2b84btest5",
+		Order_uid:          "b563feb7b2b84btest9",
 		Customer_id:        "Mytest4",
 		Date_created:       "2022-07-24 17:42:39.5555+03:00",
 		Delivery_service:   "test4",
